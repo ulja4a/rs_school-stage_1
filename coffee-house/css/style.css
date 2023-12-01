@@ -52,7 +52,8 @@ h3,
 span,
 div,
 img,
-li {
+li,
+button {
   margin: 0;
   padding: 0;
   border: 0;
@@ -560,6 +561,10 @@ div.mobile__image {
   gap: 4rem;
 }
 
+.menu__title {
+  padding: 0 28rem;
+}
+
 .menu__content {
   display: flex;
   flex-direction: column;
@@ -611,6 +616,7 @@ div.mobile__image {
 .cards__menu {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 4rem;
 }
@@ -670,6 +676,16 @@ div.mobile__image {
   font-weight: 400;
 }
 
+.menu__load {
+  width: 6rem;
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rem;
+  border: 0.1rem solid #665F55;
+}
+
 /*-----------------------media query---------------------------*/
 @media (max-width: 1440px) {
   .wrapper {
@@ -702,6 +718,7 @@ div.mobile__image {
     justify-content: center;
     gap: 0;
   }
+
 }
 
 @media (max-width: 768px) {
@@ -752,6 +769,16 @@ div.mobile__image {
 
   .footer__contact {
     padding-top: 0;
+  }
+
+  /*-------------------menu page-------------*/
+
+  .card_menu:nth-of-type(n+5) {
+    display: none;
+  }
+
+  .menu__title {
+    padding: 0;
   }
 }
 
