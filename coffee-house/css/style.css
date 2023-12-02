@@ -548,6 +548,9 @@ div.mobile__image {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 1.6rem;
+  height: 0;
+  border: 0.15rem solid #403F3D;
 }
 
 /*---------------menu---------------------------------------------------------*/
