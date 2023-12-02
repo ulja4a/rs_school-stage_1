@@ -780,6 +780,10 @@ div.mobile__image {
   .menu__title {
     padding: 0;
   }
+
+  .wrapper__menu {
+    gap: 3.8rem;
+  }
 }
 
 @media (max-width: 680px) {
@@ -885,5 +889,19 @@ div.mobile__image {
 
   .contact__links {
     gap: 2rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .menu__title {
+    padding: 0 1.6rem;
+  }
+
+  .menu__buttons {
+    gap: 0.8rem;
+  }
+
+  .cards__menu {
+    gap: 3.8rem;
   }
 }
