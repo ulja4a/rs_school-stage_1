@@ -594,6 +594,7 @@ div.mobile__image {
   font-size: 1.6rem;
   font-weight: 600;
   line-height: 2.4rem;
+  transition: 0.5s ease-in-out;
 }
 
 .menu__button:hover {
@@ -611,8 +612,26 @@ div.mobile__image {
   color: #E1D4C9;
 }
 
+.button_colored .menu__icon {
+  background: #E1D4C9;
+}
+
 .button_colored:hover {
   cursor: default;
+}
+
+.menu__button:hover .menu__icon {
+  background: #E1D4C9;
+}
+
+.menu__icon {
+  width: 3rem;
+  height: 3rem;
+  padding: 0 0.7rem;
+  border-radius: 10rem;
+  border: 1px solid #C1B6AD;
+  border-radius: 10rem;
+  background: #C1B6AD;
 }
 
 
