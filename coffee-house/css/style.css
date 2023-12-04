@@ -75,6 +75,7 @@ button {
   height: 60px;
 }
 
+
 .menu__list {
   display: flex;
   gap: 4rem;
@@ -690,14 +691,6 @@ div.mobile__image {
     display: flex;
   }
 
-  .menu {
-    display: none;
-  }
-
-  .header__menu {
-    display: none;
-  }
-
   .enjoy__content {
     padding: 10rem 0 10rem 6rem;
   }
@@ -748,6 +741,23 @@ div.mobile__image {
   .wrapper__menu {
     gap: 3.8rem;
   }
+
+  /*-----------------hamburger menu--------------------*/
+
+  .menu {
+    display: none;
+    padding-top: 6rem;
+  }
+
+  .menu__list {
+    display: none;
+    flex-direction: column;
+  }
+
+  .header__menu {
+    display: none;
+  }
+
 }
 
 @media (max-width: 680px) {
@@ -800,6 +810,7 @@ div.mobile__image {
   .enjoy__text {
     width: auto;
   }
+
 }
 
 @media (max-width: 520px) {
