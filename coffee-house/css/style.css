@@ -676,6 +676,7 @@ div.mobile__image {
     align-items: center;
     justify-content: center;
     gap: 4rem;
+    margin-top: 4rem;
   }
 
   /*-------------page menu------------------*/
