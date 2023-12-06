@@ -951,6 +951,11 @@ div.mobile__image {
 }
 
 @media (max-width: 380px) {
+
+  .menu {
+    padding-bottom: 18.4rem;
+  }
+
   .menu__title {
     padding: 0 1.6rem;
   }
