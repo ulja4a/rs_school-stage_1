@@ -668,7 +668,7 @@ div.mobile__image {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0;
+    gap: 4;
   }
 
   .about__galery-item2 {
@@ -705,6 +705,7 @@ div.mobile__image {
 
   .about__galery-item1 {
     justify-content: flex-start;
+    gap: 0;
   }
 
   .small__image {
