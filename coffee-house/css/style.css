@@ -791,6 +791,24 @@ div.mobile__image {
     line-height: 4rem;
   }
 
+  .menu-activ {
+    visibility: visible;
+  }
+
+  .hamburger-activ .hamburger-line:first-child {
+    position: absolute;
+    transform: rotate(45deg);
+    transform-origin: center;
+    transition: all .3s linear;
+  }
+
+  .hamburger-activ .hamburger-line:last-child {
+    position: absolute;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    transition: all .3s linear;
+  }
+
 
   .menu__list {
     display: flex;
@@ -813,6 +831,14 @@ div.mobile__image {
     width: 4rem;
     height: 4rem;
     margin-left: 1.6rem;
+  }
+
+  .menu__list-item-noactive {
+    pointer-events: none;
+  }
+
+  .menu__list-item-noactive::before {
+    top: 4rem;
   }
 
 }
