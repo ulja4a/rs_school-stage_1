@@ -668,14 +668,14 @@ div.mobile__image {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 4;
+    gap: 4rem;
   }
 
   .about__galery-item2 {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 0;
+    gap: 4rem;
   }
 
   /*-------------page menu------------------*/
@@ -719,6 +719,7 @@ div.mobile__image {
   .about__galery-item2 {
     justify-content: flex-start;
     margin-top: 4rem;
+    gap: 0;
   }
 
   .footer__main {
