@@ -35,15 +35,34 @@ document.body.addEventListener('click', function(el) {
 //-------------Slider Favorite Coffee--------------------------
 
 let activeSlide = 0;
-
+let lastSlide = sliderCard.length - 1;
 
 
 next.addEventListener('click', function() {
-  activeSlide += 1;
+  if (activeSlide + 1 > lastSlide) {
+    activeSlide = 0;
+  } else {
+    activeSlide += 1;
+  }
   reloadSlider();
 })
+
+prev.addEventListener('click', function() {
+  if (activeSlide - 1 < 0) {
+    activeSlide = lastSlide;
+  } else {
+    activeSlide -= 1;
+  }
+  reloadSlider();
+})
+
+
 
 function reloadSlider() {
   let checkLeft = sliderCard[activeSlide].offsetLeft;
   slider.style.left = -checkLeft + 'px';
+
+  let lastActiveDot = document.querySelector('.active');
+  lastActiveDot.classList.remove('active');
+  dots[activeSlide].classList.add('active');
 }

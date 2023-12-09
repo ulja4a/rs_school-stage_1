@@ -304,6 +304,7 @@ button {
 .element__pagination {
   margin-left: 1.2rem;
   font-size: 0;
+  transition: 1s;
 }
 
 .element__pagination:first-child {
@@ -684,6 +685,7 @@ div.mobile__image {
   left: 0;
   display: flex;
   width: max-content;
+  transition: 1s;
 }
 
 .slider__view {
