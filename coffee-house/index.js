@@ -2,6 +2,14 @@ let burger = document.querySelector('.header__hamburger');
 let burgerMenu = document.querySelector('.menu');
 let menuItem = document.querySelectorAll('.menu__list-item');
 
+let slider = document.querySelector('.slider__list');
+let sliderCard = document.querySelectorAll('.slider__card');
+let prev = document.querySelector('.slide__icon-prev');
+let next = document.querySelector('.slide__icon-next');
+let dots = document.querySelectorAll('.element__pagination');
+
+
+
 
 //---------------------Burger Menu-----------------------------------------
 burger.addEventListener('click', function() {
@@ -23,3 +31,19 @@ document.body.addEventListener('click', function(el) {
   }
 })
 //--------------end Burger Menu
+
+//-------------Slider Favorite Coffee--------------------------
+
+let activeSlide = 0;
+
+
+
+next.addEventListener('click', function() {
+  activeSlide += 1;
+  reloadSlider();
+})
+
+function reloadSlider() {
+  let checkLeft = sliderCard[activeSlide].offsetLeft;
+  slider.style.left = -checkLeft + 'px';
+}
