@@ -37,6 +37,12 @@ document.body.addEventListener('click', function(el) {
 let activeSlide = 0;
 let lastSlide = sliderCard.length - 1;
 
+let autoPlaySlider;
+
+function autoPlay() {
+  next.click();
+  setTimeout(autoPlay, 5000);
+}
 
 next.addEventListener('click', function() {
   if (activeSlide + 1 > lastSlide) {
@@ -45,6 +51,7 @@ next.addEventListener('click', function() {
     activeSlide += 1;
   }
   reloadSlider();
+  clearTimeout(autoPlaySlider);
 })
 
 prev.addEventListener('click', function() {
@@ -54,9 +61,8 @@ prev.addEventListener('click', function() {
     activeSlide -= 1;
   }
   reloadSlider();
+  clearTimeout(autoPlaySlider);
 })
-
-
 
 function reloadSlider() {
   let checkLeft = sliderCard[activeSlide].offsetLeft;
@@ -66,3 +72,5 @@ function reloadSlider() {
   lastActiveDot.classList.remove('active');
   dots[activeSlide].classList.add('active');
 }
+
+autoPlay();

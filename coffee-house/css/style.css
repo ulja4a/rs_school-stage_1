@@ -299,22 +299,36 @@ button {
 .favorite__slider-pagination {
   font-size: 0;
   line-height: 0;
+
 }
 
 .element__pagination {
   margin-left: 1.2rem;
-  font-size: 0;
-  transition: 1s;
+  width: 4rem;
+  height: 0.4rem;
+  background-color: #C1B6AD;
+  border-radius: 10rem;
+  transition: all .3s linear;
+  position: relative;
+  display: inline-block;
 }
 
 .element__pagination:first-child {
   margin-left: 0;
 }
 
-
-.active svg rect {
-  fill: #665F55;
+.element__pagination::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
 }
+
+.active {
+  background-color: #665F55;
+}
+
 
 .wrapper__about {
   margin-top: 10rem;
