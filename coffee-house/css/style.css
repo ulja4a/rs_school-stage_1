@@ -311,6 +311,7 @@ button {
   transition: all .3s linear;
   position: relative;
   display: inline-block;
+  overflow: hidden;
 }
 
 .element__pagination:first-child {
@@ -323,10 +324,28 @@ button {
   top: 0;
   left: 0;
   width: 0;
+  height: 100%;
 }
 
-.active {
+
+.active::after {
+  width: 0;
+  height: 100%;
   background-color: #665F55;
+  animation: fillAnimation 5s linear forwards;
+}
+
+@keyframes fillAnimation {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.reset {
+  width: 0;
 }
 
 
