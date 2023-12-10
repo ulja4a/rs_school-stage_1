@@ -325,6 +325,7 @@ button {
   left: 0;
   width: 0;
   height: 100%;
+  transition: width 5s linear;
 }
 
 
@@ -344,8 +345,8 @@ button {
   }
 }
 
-.reset {
-  width: 0;
+.hidden {
+  overflow: hidden;
 }
 
 
@@ -867,13 +868,14 @@ div.mobile__image {
     padding-top: 16rem;
     padding-bottom: 36.4rem;
     gap: 10rem;
-    position: absolute;
+    position: fixed;
     background-color: #E1D4C9;
     margin: 0;
     right: 0;
     top: 0;    
     width: 100%;
-    visibility: hidden;
+    height: 100vh;
+    transform: translateX(100%);
     z-index: 2;
     transition: all 0.5s linear;
     color: var(--text-dark, #403F3D);
@@ -883,8 +885,9 @@ div.mobile__image {
   }
 
   .menu-activ {
-    visibility: visible;
+    transform: translateX(0);
   }
+
 
   .hamburger-activ .hamburger-line:first-child {
     position: absolute;

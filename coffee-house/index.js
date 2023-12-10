@@ -1,6 +1,7 @@
 let burger = document.querySelector('.header__hamburger');
 let burgerMenu = document.querySelector('.menu');
 let menuItem = document.querySelectorAll('.menu__list-item');
+let body = document.getElementsByTagName('body');
 
 let slider = document.querySelector('.slider__list');
 let sliderCard = document.querySelectorAll('.slider__card');
@@ -10,24 +11,37 @@ let dots = document.querySelectorAll('.element__pagination');
 
 
 
-
+let autoPlaySlider = setInterval(() => {next.click()}, 5000);
 //---------------------Burger Menu-----------------------------------------
-burger.addEventListener('click', function() {
+burger.addEventListener('click', function(event) {
+  event.stopPropagation();
+
+  stopSliderInterval();
+
   burger.classList.toggle('hamburger-activ');
   burgerMenu.classList.toggle('menu-activ')
+  document.body.classList.toggle('hidden');
+
+  startSliderInterval();
 })
 
 menuItem.forEach(function(e) {
-  e.addEventListener('click', function() {
+  e.addEventListener('click', function(event) {
     burger.classList.remove('hamburger-activ');
     burgerMenu.classList.remove('menu-activ');
+    document.body.classList.remove('hidden');
+
+    if (!autoPlaySlider) {
+      startSliderInterval();
+    }
   })
 })
 
 document.body.addEventListener('click', function(el) {
-  if(el.target != burgerMenu && el.target != burger) {
+  if(el.target != menuItem && el.target != burger) {
     burger.classList.remove('hamburger-activ');
     burgerMenu.classList.remove('menu-activ');
+    document.body.classList.remove('hidden');
   }
 })
 //--------------end Burger Menu
@@ -37,8 +51,18 @@ document.body.addEventListener('click', function(el) {
 let activeSlide = 0;
 let lastSlide = sliderCard.length - 1;
 
-let autoPlaySlider = setInterval(() => {next.click()}, 5000);
+function startSliderInterval() {
+  autoPlaySlider = setInterval(function() {
+    activeSlide = (activeSlide + 1) % sliderCard.length;
+    reloadSlider();
+  }, 5000);
+}
 
+function stopSliderInterval() {
+  if (autoPlaySlider) {
+    clearInterval(autoPlaySlider);
+  }
+}
 
 next.addEventListener('click', function() {
   if (activeSlide + 1 > lastSlide) {
@@ -47,7 +71,8 @@ next.addEventListener('click', function() {
     activeSlide += 1;
   }
   reloadSlider();
-  console.log(autoPlaySlider);
+  stopSliderInterval();
+  startSliderInterval();
 })
 
 prev.addEventListener('click', function() {
@@ -57,17 +82,19 @@ prev.addEventListener('click', function() {
     activeSlide -= 1;
   }
   reloadSlider();
+  stopSliderInterval();
+  startSliderInterval();
 })
 
 
 function reloadSlider() {
   let checkLeft = sliderCard[activeSlide].offsetLeft;
   slider.style.left = -checkLeft + 'px';
-
   let lastActiveDot = document.querySelector('.active');
   lastActiveDot.classList.remove('active');
   dots[activeSlide].classList.add('active');
-  clearTimeout(autoPlaySlider);
-  autoPlaySlider = setInterval(() => {next.click()}, 5000);
 }
 
+window.onresize = function(event) {
+  reloadSlider();
+};
