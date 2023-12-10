@@ -1,3 +1,6 @@
+import jsonMenu from './products.json' assert {type: "json"};
+console.log(jsonMenu[0]["name"]);
+
 let burger = document.querySelector('.header__hamburger');
 let burgerMenu = document.querySelector('.menu');
 let menuItem = document.querySelectorAll('.menu__list-item');
@@ -9,9 +12,10 @@ let prev = document.querySelector('.slide__icon-prev');
 let next = document.querySelector('.slide__icon-next');
 let dots = document.querySelectorAll('.element__pagination');
 
-
-
-let autoPlaySlider = setInterval(() => {next.click()}, 5000);
+let autoPlaySlider;
+if (typeof next !== 'undefined' && next !== null) {
+  autoPlaySlider = setInterval(() => {next.click()}, 5000);
+}
 //---------------------Burger Menu-----------------------------------------
 burger.addEventListener('click', function(event) {
   event.stopPropagation();
@@ -64,6 +68,7 @@ function stopSliderInterval() {
   }
 }
 
+if (next) {
 next.addEventListener('click', function() {
   if (activeSlide + 1 > lastSlide) {
     activeSlide = 0;
@@ -74,7 +79,9 @@ next.addEventListener('click', function() {
   stopSliderInterval();
   startSliderInterval();
 })
+}
 
+if (prev) {
 prev.addEventListener('click', function() {
   if (activeSlide - 1 < 0) {
     activeSlide = lastSlide;
@@ -85,6 +92,7 @@ prev.addEventListener('click', function() {
   stopSliderInterval();
   startSliderInterval();
 })
+}
 
 
 function reloadSlider() {
