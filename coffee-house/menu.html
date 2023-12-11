@@ -8,6 +8,15 @@
   <title>Menu</title>
 </head>
 <body>
+  <div class="overlay">
+    <div class="modal__menu">
+      <div class="modal__menu-wrapper">
+        <div class="modal__img"></div>
+        <div class="modal__content"></div>
+      </div>
+    </div>
+  </div>
+  
   <header class="header">
     <div class="wrapper wrapper__header">
       <a href="home.html" class="logo_menu">
@@ -32,8 +41,8 @@
             <a href="#contact" class="menu__list-link">Contact us</a>
           </li>
         </ul>
+        <a href="#" class="header__menu menu__list-item-noactive">Menu</a>
       </nav>
-      <a href="#" class="header__menu menu__list-item-noactive">Menu</a>
     </div>
   </header>
   <main class="main">
@@ -41,118 +50,21 @@
       <div class="menu__content">
         <h1 class="menu__title">Behind each of our cups hides an <span class="color__accent">amazing surprise</span></h1>
         <div class="menu__buttons">
-          <button class="menu__button button_colored">
+          <button class="menu__button button_colored" data-category="coffee">
             <img src="./assets/svg/cup.svg" alt="A cup of coffee" class="menu__icon">
             Coffee
           </button>
-          <button class="menu__button">
+          <button class="menu__button" data-category="tea">
             <img src="./assets/svg/ch.svg" alt="A teapot" class="menu__icon">
             Tea
           </button>
-          <button class="menu__button">
+          <button class="menu__button" data-category="dessert">
             <img src="./assets/svg/cake.svg" alt="A piece of cake" class="menu__icon">
             Dessert
           </button>
         </div>
       </div>
-      <div class="cards__menu">
-        <div class="card_menu">
-          <div class="card_menu-image">
-            <img src="./assets/img/coffee-1.png" alt="Irish coffee" class="menu-img">
-          </div>
-          <div class="card_menu-content">
-            <div class="card_menu-text">
-              <p class="card_menu-title">Irish coffee</p>
-              <p class="card_menu-description">Fragrant black coffee with Jameson Irish whiskey and whipped milk</p>
-            </div>
-            <p class="card_menu-price">$7.00</p>
-          </div>
-        </div>
-        <div class="card_menu">
-          <div class="card_menu-image">
-            <img src="./assets/img/coffee-2.png" alt="Kahlua coffee" class="menu-img">
-          </div>
-          <div class="card_menu-content">
-            <div class="card_menu-text">
-              <p class="card_menu-title">Kahlua coffee</p>
-              <p class="card_menu-description">Classic coffee with milk and Kahlua liqueur under a cap of frothed milk</p>
-            </div>
-            <p class="card_menu-price">$7.00</p>
-          </div>
-        </div>
-        <div class="card_menu">
-          <div class="card_menu-image">
-            <img src="./assets/img/coffee-3.png" alt="Honey raf" class="menu-img">
-          </div>
-          <div class="card_menu-content">
-            <div class="card_menu-text">
-              <p class="card_menu-title">Honey raf</p>
-              <p class="card_menu-description">Espresso with frothed milk, cream and aromatic honey</p>
-            </div>
-            <p class="card_menu-price">$5.50</p>
-          </div>
-        </div>
-        <div class="card_menu">
-          <div class="card_menu-image">
-            <img src="./assets/img/coffee-4.png" alt="Ice cappuccino" class="menu-img">
-          </div>
-          <div class="card_menu-content">
-            <div class="card_menu-text">
-              <p class="card_menu-title">Ice cappuccino</p>
-              <p class="card_menu-description">Cappuccino with soft thick foam in summer version with ice</p>
-            </div>
-            <p class="card_menu-price">$5.00</p>
-          </div>
-        </div>
-        <div class="card_menu">
-          <div class="card_menu-image">
-            <img src="./assets/img/coffee-5.png" alt="Espresso" class="menu-img">
-          </div>
-          <div class="card_menu-content">
-            <div class="card_menu-text">
-              <p class="card_menu-title">Espresso</p>
-              <p class="card_menu-description">Classic black coffee</p>
-            </div>
-            <p class="card_menu-price">$4.50</p>
-          </div>
-        </div>
-        <div class="card_menu">
-          <div class="card_menu-image">
-            <img src="./assets/img/coffee-6.png" alt="Latte" class="menu-img">
-          </div>
-          <div class="card_menu-content">
-            <div class="card_menu-text">
-              <p class="card_menu-title">Latte</p>
-              <p class="card_menu-description">Espresso coffee with the addition of steamed milk and dense milk foam</p>
-            </div>
-            <p class="card_menu-price">$5.50</p>
-          </div>
-        </div>
-        <div class="card_menu">
-          <div class="card_menu-image">
-            <img src="./assets/img/coffee-7.png" alt="Latte macchiato" class="menu-img">
-          </div>
-          <div class="card_menu-content">
-            <div class="card_menu-text">
-              <p class="card_menu-title">Latte macchiato</p>
-              <p class="card_menu-description">Espresso with frothed milk and chocolate</p>
-            </div>
-            <p class="card_menu-price">$5.50</p>
-          </div>
-        </div>
-        <div class="card_menu">
-          <div class="card_menu-image">
-            <img src="./assets/img/coffee-8.png" alt="Coffee with cognac" class="menu-img">
-          </div>
-          <div class="card_menu-content">
-            <div class="card_menu-text">
-              <p class="card_menu-title">Coffee with cognac</p>
-              <p class="card_menu-description">Fragrant black coffee with cognac and whipped cream</p>
-            </div>
-            <p class="card_menu-price">$6.50</p>
-          </div>
-        </div>
-      </div>
+      <div class="cards__menu"></div>
       <div class="menu__load">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
           <path d="M21.8883 13.5C21.1645 18.3113 17.013 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C16.1006 2 19.6248 4.46819 21.1679 8" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
@@ -223,5 +135,7 @@
       </div>
     </div>
   </footer>
+  <script defer type="module" src="./js/burger.js"></script>
+  <script defer type="module" src="./js/menu.js"></script>
 </body>
 </html>

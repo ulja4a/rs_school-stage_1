@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
+  <script defer type="module" src="./js/index.js"></script>
+  <script defer type="module" src="./js/burger.js"></script>
   <link rel="icon" href="assets/img/favicon.ico">
   <title>Coffee house</title>
 </head>
@@ -28,8 +30,8 @@
             <a href="#contact" class="menu__list-link">Contact us</a>
           </li>
         </ul>
+        <a href="menu.html" class="header__menu menu__list-item">Menu</a>
       </nav>
-      <a href="#" class="header__menu menu__list-item">Menu</a>
       <div class="header__hamburger">
         <span class="hamburger-line"></span>
         <span class="hamburger-line"></span>
@@ -39,6 +41,9 @@
   <main class="main">
     <section class="enjoy">
       <div class="wrapper wrapper__enjoy">
+        <div class="video_blok">
+          <video src="./assets/video/video.mp4" autoplay muted loop id="video"></video>
+        </div>
         <div class="enjoy__content">
           <h1 class="enjoy__title"><span class="color__accent">Enjoy</span> premium coffee at our charming cafe</h1>
           <p class="enjoy__text">With its inviting atmosphere and delicious coffee options, the Coffee House Resource is a popular destination for coffee lovers and those seeking a warm and inviting space to enjoy their favorite beverage.</p>
@@ -60,12 +65,32 @@
                 <path d="M36.5 30H24M24 30L30 24M24 30L30 36" stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>                
             </div>
-            <div class="slider__card">
-              <img src="./assets/img/coffee-slider-1.png" alt="S'mores Frappuccino" class="slider__img">
-              <div class="slider__card-content">
-                <h3 class="card-content__title">S&#39;mores Frappuccino</h3>
-                <p class="card-content__description">This new drink takes an espresso and mixes it with brown <br>sugar and cinnamon before being topped with oat milk.</p>
-                <p class="card-content__price">$5.50</p>
+            <div class="slider__view">
+              <div class="slider__list" draggable="true">
+                <div class="slider__card">
+                  <img src="./assets/img/coffee-slider-1.png" alt="S'mores Frappuccino" class="slider__img">
+                  <div class="slider__card-content">
+                    <h3 class="card-content__title">S&#39;mores Frappuccino</h3>
+                    <p class="card-content__description">This new drink takes an espresso and mixes it with brown <br>sugar and cinnamon before being topped with oat milk.</p>
+                    <p class="card-content__price">$5.50</p>
+                  </div>
+                </div>
+                <div class="slider__card">
+                  <img src="./assets/img/coffee-slider-2.png" alt="Caramel Macchiato" class="slider__img">
+                  <div class="slider__card-content">
+                    <h3 class="card-content__title">Caramel Macchiato</h3>
+                    <p class="card-content__description">Fragrant and unique classic espresso with rich caramel-peanut <br>syrup, with cream under whipped thick foam.</p>
+                    <p class="card-content__price">$5.00</p>
+                  </div>
+                </div>
+                <div class="slider__card">
+                  <img src="./assets/img/coffee-slider-3.png" alt="Ice coffee" class="slider__img">
+                  <div class="slider__card-content">
+                    <h3 class="card-content__title">Ice coffee</h3>
+                    <p class="card-content__description">A popular summer drink that tones and invigorates. Prepared <br>from coffee, milk and ice.</p>
+                    <p class="card-content__price">$4.50</p>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="slide__icon slide__icon-next">
@@ -76,21 +101,9 @@
             </div>
           </div>
           <div class="favorite__slider-pagination">
-            <span class="element__pagination active">
-              <svg width="40" height="4" viewBox="0 0 40 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="4" rx="2" fill="#C1B6AD"/>
-                </svg>                  
-            </span>
-            <span class="element__pagination">
-              <svg width="40" height="4" viewBox="0 0 40 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="4" rx="2" fill="#C1B6AD"/>
-                </svg>                  
-            </span>
-            <span class="element__pagination">
-              <svg width="40" height="4" viewBox="0 0 40 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="40" height="4" rx="2" fill="#C1B6AD"/>
-                </svg>                  
-            </span>
+            <span class="element__pagination active"></span>
+            <span class="element__pagination"></span>
+            <span class="element__pagination"></span>
           </div>
         </div>
       </div>
