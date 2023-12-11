@@ -827,6 +827,7 @@ div.mobile__image {
 .size-tabs,
 .additives-tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
 }
 
@@ -905,6 +906,28 @@ div.mobile__image {
   font-weight: 600;
   line-height: 2.4rem;
   transition: 0.6s;
+}
+
+@media (max-width: 964px) {
+  .modal__menu {
+    max-width: 65.6rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .modal__img {
+    display: none;
+  }
+
+  .modal__menu {
+    margin: 0 1.9rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .modal__menu {
+    max-width: 34.2rem;
+  }
 }
 
 /*--------------------end Modal Menu---------------------------*/
