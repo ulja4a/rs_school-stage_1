@@ -4,6 +4,7 @@ let cardsMenu = document.querySelector('.cards__menu');
 let menuButtons = document.querySelectorAll('.menu__button');
 let loadButton = document.querySelector('.menu__load');
 
+
 menuButtons.forEach(function(button) {
   button.addEventListener('click', function() {
     menuButtons.forEach(function(btn) {
@@ -60,6 +61,7 @@ function loadCards(category) {
     cardMenu.appendChild(cardMenuContent);
 
     cardsMenu.appendChild(cardMenu);
+    updateDisplay()
   });
 }
 
@@ -70,12 +72,22 @@ function updateDisplay() {
     document.querySelector('.menu__load').style.display = 'none';
   } else {
       if (window.innerWidth <= 768) {
-        document.querySelector('.menu__load').style.display = 'flex';
+        loadButton.style.display = 'flex';
       } else {
-          document.querySelector('.menu__load').style.display = 'none';
+          loadButton.style.display = 'none';
         }
     }
 }
+
+loadButton.addEventListener('click', function() {
+  let loadCardsHidden = document.querySelectorAll('.card_menu:nth-of-type(n+5)');
+  loadCardsHidden.forEach(function(itemHidden) {
+    itemHidden.style.display = 'flex';
+  })
+  
+  loadButton.style.display = 'none';
+})
+
   window.addEventListener('resize', updateDisplay);
   loadCards('coffee');
 
