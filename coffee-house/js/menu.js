@@ -2,6 +2,7 @@ import jsonMenu from '../products.json' assert {type: "json"};
 
 let cardsMenu = document.querySelector('.cards__menu');
 let menuButtons = document.querySelectorAll('.menu__button');
+let loadButton = document.querySelector('.menu__load');
 
 menuButtons.forEach(function(button) {
   button.addEventListener('click', function() {
@@ -61,5 +62,20 @@ function loadCards(category) {
     cardsMenu.appendChild(cardMenu);
   });
 }
+
+function updateDisplay() {
+  const loadedCards = document.querySelectorAll('.card_menu');
+  
+  if (loadedCards.length <= 4) {
+    document.querySelector('.menu__load').style.display = 'none';
+  } else {
+      if (window.innerWidth <= 768) {
+        document.querySelector('.menu__load').style.display = 'flex';
+      } else {
+          document.querySelector('.menu__load').style.display = 'none';
+        }
+    }
+}
+  window.addEventListener('resize', updateDisplay);
   loadCards('coffee');
 
