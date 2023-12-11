@@ -20,8 +20,11 @@ menuButtons.forEach(function(button) {
   });
 });
 
+let currentCategory;
+
 
 function loadCards(category) {
+  currentCategory = category;
   cardsMenu.innerHTML = "";
   const filteredData = jsonMenu.filter(item => item.category === category);
   filteredData.forEach(function (item) {
@@ -96,20 +99,97 @@ function modal() {
   let modalMenu = document.querySelector('.modal__menu');
   let overlay = document.querySelector('.overlay');
   let modalImg = document.querySelector('.modal__img');
+  let modalName = document.querySelector('.content-name_title');
+  let modalDescription = document.querySelector('.content-name_description');
+  let modalSizeS = document.querySelector('.size-value.S');
+  let modalSizeM = document.querySelector('.size-value.M');
+  let modalSizeL = document.querySelector('.size-value.L');
+  let modalAdditivesOne = document.querySelector('.additives-value.one');
+  let modalAdditivesTwo = document.querySelector('.additives-value.two');
+  let modalAdditivesThree = document.querySelector('.additives-value.three');
+  let modalPrice = document.querySelector('.content-price_price');
+  let modalClose = document.querySelector('.modal__content-close');
+  let modalSizeButton = document.querySelectorAll('.size-button');
+  
+  
+  
+
   loadedCards.forEach(function(item, index) {
     item.addEventListener('click', ()=> {
       document.body.style.overflow = 'hidden';
       overlay.classList.add('overlay-visible');
       modalMenu.classList.add('modal-visible');
-      modalImg.style.backgroundImage = `url(${jsonMenu[index].img})`;
+
+      let imagePath = jsonMenu.filter(product => product.category === currentCategory)[index].img;
+      modalImg.style.backgroundImage = `url(${imagePath})`;
+
+      let name = jsonMenu.filter(product => product.category === currentCategory)[index].name;
+      modalName.textContent = `${name}`;
+
+      let description = jsonMenu.filter(product => product.category === currentCategory)[index].description;
+      modalDescription.textContent = `${description}`;
+
+      let sizeS = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.s.size;
+      //let sizeSAddPrice = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.s.add-price;
+      modalSizeS.textContent = `${sizeS}`;
+
+      let sizeM = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.m.size;
+      //let sizeMAddPrice = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.m.add-price;
+      modalSizeM.textContent = `${sizeM}`;
+
+      let sizeL = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.l.size;
+      //let sizeLAddPrice = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.l.add-price;
+      modalSizeL.textContent = `${sizeL}`;
+
+      let additiveOne = jsonMenu.filter(product => product.category === currentCategory)[index].additives[0].name;
+      modalAdditivesOne.textContent = `${additiveOne}`;
+
+      let additiveTwo = jsonMenu.filter(product => product.category === currentCategory)[index].additives[1].name;
+      modalAdditivesTwo.textContent = `${additiveTwo}`;
+
+      let additiveThree = jsonMenu.filter(product => product.category === currentCategory)[index].additives[2].name;
+      modalAdditivesThree.textContent = `${additiveThree}`;
+
+      let price = jsonMenu.filter(product => product.category === currentCategory)[index].price;
+      modalPrice.textContent = `$${price}`;
+      
     })
   })
 
+  modalMenu.addEventListener('click', (event) => {
+    event.stopPropagation();
+  })
+  
   overlay.addEventListener('click', ()=> {
+    modalSizeButton.forEach(function(btnSize) {
+      btnSize.classList.remove('size-button_colored');
+    });
+    modalSizeButton[0].classList.add('size-button_colored');
     document.body.style.overflow = '';
     overlay.classList.remove('overlay-visible');
     modalMenu.classList.remove('modal-visible');
   })
+
+  modalClose.addEventListener('click', ()=> {
+    modalSizeButton.forEach(function(btnSize) {
+      btnSize.classList.remove('size-button_colored');
+    });
+    modalSizeButton[0].classList.add('size-button_colored');
+    document.body.style.overflow = '';
+    overlay.classList.remove('overlay-visible');
+    modalMenu.classList.remove('modal-visible');
+  })
+
+  modalSizeButton.forEach(function(itemSize) {
+    itemSize.addEventListener('click', function() {
+      modalSizeButton.forEach(function(btnSize) {
+        btnSize.classList.remove('size-button_colored');
+      })
+      itemSize.classList.add('size-button_colored');
+
+    })
+  })
+
 }
 
   window.addEventListener('resize', updateDisplay);
