@@ -108,6 +108,7 @@ function modal() {
   let modalAdditivesTwo = document.querySelector('.additives-value.two');
   let modalAdditivesThree = document.querySelector('.additives-value.three');
   let modalPrice = document.querySelector('.content-price_price');
+  let modalClose = document.querySelector('.modal__content-close');
   
 
   loadedCards.forEach(function(item, index) {
@@ -148,7 +149,19 @@ function modal() {
     })
   })
 
+  modalMenu.addEventListener('click', (event) => {
+    event.stopPropagation();
+  })
+  
   overlay.addEventListener('click', ()=> {
+    console.log('overlay')
+    document.body.style.overflow = '';
+    overlay.classList.remove('overlay-visible');
+    modalMenu.classList.remove('modal-visible');
+  })
+
+  modalClose.addEventListener('click', ()=> {
+    console.log('close')
     document.body.style.overflow = '';
     overlay.classList.remove('overlay-visible');
     modalMenu.classList.remove('modal-visible');
