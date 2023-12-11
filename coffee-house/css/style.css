@@ -755,6 +755,7 @@ div.mobile__image {
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .overlay-visible {
@@ -762,13 +763,14 @@ div.mobile__image {
 }
 
 .modal__menu {
+  position: fixed;
   max-width: 80rem;
   height: 400px;
   background: #E1D4C9;
   border-radius: 4rem;
   display: none;
   transition: 0.5s ease;
-  z-index: 15;
+  z-index: 1001;
 }
 
 .modal-visible {
@@ -776,7 +778,7 @@ div.mobile__image {
 }
 
 .modal__menu-wrapper {
-  padding: 0 1.6rem;
+  padding: 1.6rem;
 }
 
 .modal__img {

@@ -20,8 +20,11 @@ menuButtons.forEach(function(button) {
   });
 });
 
+let currentCategory;
+
 
 function loadCards(category) {
+  currentCategory = category;
   cardsMenu.innerHTML = "";
   const filteredData = jsonMenu.filter(item => item.category === category);
   filteredData.forEach(function (item) {
@@ -101,7 +104,9 @@ function modal() {
       document.body.style.overflow = 'hidden';
       overlay.classList.add('overlay-visible');
       modalMenu.classList.add('modal-visible');
-      modalImg.style.backgroundImage = `url(${jsonMenu[index].img})`;
+
+      let imagePath = jsonMenu.filter(product => product.category === currentCategory)[index].img;
+      modalImg.style.backgroundImage = `url(${imagePath})`;
     })
   })
 
