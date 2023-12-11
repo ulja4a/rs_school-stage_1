@@ -741,6 +741,43 @@ div.mobile__image {
   }
 
 }
+/*---------------------end Slider-----------------------------*/
+
+/*--------------------Modal Menu------------------------------*/
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-visible {
+  display: flex;
+}
+
+.modal__menu {
+  max-width: 80rem;
+  height: 400px;
+  background: #E1D4C9;
+  border-radius: 4rem;
+  display: none;
+}
+
+.modal-visible {
+  display: flex;
+}
+
+.modal__menu-wrapper {
+  padding: 0 1.6rem;
+}
+
+/*--------------------end Modal Menu---------------------------*/
 
 /*-----------------------media query---------------------------*/
 @media (max-width: 1440px) {

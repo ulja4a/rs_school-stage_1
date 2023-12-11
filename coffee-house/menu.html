@@ -4,12 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-  <script defer type="module" src="./js/burger.js"></script>
-  <script defer type="module" src="./js/menu.js"></script>
   <link rel="icon" href="assets/img/favicon.ico">
   <title>Menu</title>
 </head>
 <body>
+  <div class="overlay">
+    <div class="modal__menu">
+      <div class="modal__menu-wrapper">
+        <div class="modal__img"></div>
+        <div class="modal__content"></div>
+      </div>
+    </div>
+  </div>
+  
   <header class="header">
     <div class="wrapper wrapper__header">
       <a href="home.html" class="logo_menu">
@@ -128,5 +135,7 @@
       </div>
     </div>
   </footer>
+  <script defer type="module" src="./js/burger.js"></script>
+  <script defer type="module" src="./js/menu.js"></script>
 </body>
 </html>

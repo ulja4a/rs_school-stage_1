@@ -1,8 +1,10 @@
 import jsonMenu from '../products.json' assert {type: "json"};
 
+
 let cardsMenu = document.querySelector('.cards__menu');
 let menuButtons = document.querySelectorAll('.menu__button');
 let loadButton = document.querySelector('.menu__load');
+let body = document.getElementsByTagName('body');
 
 
 menuButtons.forEach(function(button) {
@@ -62,6 +64,7 @@ function loadCards(category) {
 
     cardsMenu.appendChild(cardMenu);
     updateDisplay()
+    modal();
   });
 }
 
@@ -88,6 +91,26 @@ loadButton.addEventListener('click', function() {
   loadButton.style.display = 'none';
 })
 
+function modal() {
+  let loadedCards = document.querySelectorAll('.card_menu');
+  let modalMenu = document.querySelector('.modal__menu');
+  let overlay = document.querySelector('.overlay');
+  loadedCards.forEach(function(item) {
+    item.addEventListener('click', ()=> {
+      document.body.style.overflow = 'hidden';
+      overlay.classList.add('overlay-visible');
+      modalMenu.classList.add('modal-visible');
+    })
+  })
+
+  overlay.addEventListener('click', ()=> {
+    document.body.style.overflow = '';
+    overlay.classList.remove('overlay-visible');
+    modalMenu.classList.remove('modal-visible');
+  })
+}
+
   window.addEventListener('resize', updateDisplay);
   loadCards('coffee');
+
 
