@@ -95,11 +95,13 @@ function modal() {
   let loadedCards = document.querySelectorAll('.card_menu');
   let modalMenu = document.querySelector('.modal__menu');
   let overlay = document.querySelector('.overlay');
-  loadedCards.forEach(function(item) {
+  let modalImg = document.querySelector('.modal__img');
+  loadedCards.forEach(function(item, index) {
     item.addEventListener('click', ()=> {
       document.body.style.overflow = 'hidden';
       overlay.classList.add('overlay-visible');
       modalMenu.classList.add('modal-visible');
+      modalImg.style.backgroundImage = `url(${jsonMenu[index].img})`;
     })
   })
 

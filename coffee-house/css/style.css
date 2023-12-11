@@ -767,6 +767,8 @@ div.mobile__image {
   background: #E1D4C9;
   border-radius: 4rem;
   display: none;
+  transition: 0.5s ease;
+  z-index: 15;
 }
 
 .modal-visible {
@@ -776,6 +778,14 @@ div.mobile__image {
 .modal__menu-wrapper {
   padding: 0 1.6rem;
 }
+
+.modal__img {
+  width: 31rem;
+  height: 31rem;
+  border-radius: 4rem;
+  background-position: center;
+  background-repeat: no-repeat;
+} 
 
 /*--------------------end Modal Menu---------------------------*/
 
