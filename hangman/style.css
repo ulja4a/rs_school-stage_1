@@ -10,19 +10,25 @@
 body {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  padding: 0 10px;
+  justify-content: center;
   min-height: 100vh;
   background: #78ee9f;
 }
 
 .wrapper {
-  max-width: 90vw;
+  width: 850px;
   background: #fff;
   display: flex;
   align-items: flex-end;
   gap: 70px;
   padding: 60px 40px;
   border-radius: 20px;
+  margin: 10px;
+}
+
+.gallows-img {
+  max-width: 270px;
 }
 
 .name-game {
@@ -73,25 +79,105 @@ span {
 
 .keyboard {
   display: flex;
-  gap: 7px;
+  gap: 5px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 160px;
+  margin-top: 40px;
 }
 
-.keyboard button {
+:where(.modal, .keyboard) button {
   font-size: 1.2rem;
   font-weight: 600;
-  padding: 15px;
   background: #24bb56;
   text-transform: uppercase;
-  width: calc(100% / 13 - 7px);
   border-radius: 5px;
   cursor: pointer;
   outline: none;
   border: none;
 }
 
-.keyboard button:hover {
+.keyboard button {
+  padding: 7px;
+  width: calc(100% / 9 - 5px);
+}
+
+.keyboard button[disabled] {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+:where(.modal, .keyboard) button:hover {
   background: #78ee9f;
+}
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.4s ease;
+}
+.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #fff;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.modal-img {
+  max-width: 120px;
+  margin-bottom: 20px;
+}
+
+.game-over {
+  font-size: 1.5rem;
+}
+
+.modal-text {
+  font-size: 1.1rem;
+  margin: 15px 0 30px;
+  font-weight: 500;
+}
+
+.play-again {
+  padding: 10px 20px;
+}
+
+@media (max-width: 960px) {
+  .wrapper {
+    flex-direction: column;
+    padding: 30px 20px;
+    align-items: center;
+  }
+
+  .name-game {
+    display: none;
+  }
+}
+
+@media (max-width: 870px) {
+  .wrapper {
+    flex-direction: column;
+    padding: 20px 10px;
+    align-items: center;
+  }
+
+  .gallows-img {
+    max-width: 200px;
+  }
 }
