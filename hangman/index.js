@@ -9,6 +9,12 @@ let wordDisplay = document.createElement('ul');
 let questionDisplay = document.createElement('h4');
 let guesses = document.createElement('h4');
 let score = document.createElement('span');
+let modal = document.createElement('div');
+let modalContent = document.createElement('div');
+let smile = document.createElement('img');
+let gameEnd = document.createElement('h4');
+let textModal = document.createElement('p');
+let buttonModal = document.createElement('button');
 comtainer.classList.add('wrapper');
 gallows.classList.add('gallows');
 gallowsImg.classList.add('gallows-img');
@@ -24,7 +30,18 @@ questionDisplay.classList.add('question');
 guesses.classList.add('guesses');
 guesses.textContent = 'Incorrect guesses: ';
 score.textContent = '0 / 6';
+modal.classList.add('modal');
+modalContent.classList.add('modal-content');
+smile.classList.add('modal-img');
+smile.src = './images/smile-0.png';
+smile.alt = 'smile';
+gameEnd.classList.add('game-over');
+textModal.classList.add('modal-text');
+textModal.innerText = 'The correct word was: ';
+buttonModal.classList.add('play-again');
+buttonModal.textContent = 'Play Again';
 document.body.append(comtainer);
+document.body.append(modal);
 comtainer.append(gallows);
 gallows.append(gallowsImg);
 gallows.append(nameGame);
@@ -33,6 +50,11 @@ gameBox.append(wordDisplay);
 //wordDisplay.append(letter);
 gameBox.append(questionDisplay);
 gameBox.append(guesses);
+modal.append(modalContent);
+modalContent.append(smile);
+modalContent.append(gameEnd);
+modalContent.append(textModal);
+modalContent.append(buttonModal);
 
 
 // add keyboards buttons
@@ -42,12 +64,14 @@ gameBox.append(keyboardDiv);
 
 let currentGuesses = 0;
 let maxGuesses = 6;
+let rightLetters = [];
 
 let initGame = (button, clickedLetter) => {
   console.log(button, clickedLetter);
   if(currentWord.includes(clickedLetter)) {
     [...currentWord].forEach((letter, index) => {
       if(letter === clickedLetter) {
+        rightLetters.push(letter);
         wordDisplay.querySelectorAll('li')[index].innerText = letter;
         wordDisplay.querySelectorAll('li')[index].classList.add('active');
       }
@@ -58,6 +82,11 @@ let initGame = (button, clickedLetter) => {
   }
   button.disabled = true;
   score.innerText = `${currentGuesses} / ${maxGuesses}`;
+
+  if(currentGuesses === maxGuesses)
+    return gameOver(false);
+  if(rightLetters.length === currentWord.length)
+    return gameOver(true);
 }
 guesses.append(score);
 
