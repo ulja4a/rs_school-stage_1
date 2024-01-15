@@ -62,9 +62,19 @@ let keyboardDiv = document.createElement('div');
 keyboardDiv.classList.add('keyboard');
 gameBox.append(keyboardDiv);
 
-let currentGuesses = 0;
+let currentGuesses;
 let maxGuesses = 6;
-let rightLetters = [];
+let rightLetters;
+
+let resetGame = () => {
+  rightLetters = [];
+  currentGuesses = 0;
+  gallowsImg.src = `./images/gallows-${currentGuesses}.png`;
+  score.innerText = `${currentGuesses} / ${maxGuesses}`;
+  keyboardDiv.querySelectorAll('button').forEach(btn => btn.disabled = false);
+  modal.classList.remove('show');
+}
+
 let gameOver = (isVictory) => {
   setTimeout(() => {
     smile.src = `images/${isVictory ? 'smile-1' : 'smile-0'}.png`;
@@ -157,6 +167,10 @@ let getRandomWord = () => {
   currentWord = word;
   console.log(word);
   questionDisplay.innerText = question;
+  resetGame();
   wordDisplay.innerHTML = word.split("").map(() => `<li class="letter"></li>`).join("");
 }
 getRandomWord();
+
+//click button play again
+buttonModal.addEventListener('click', getRandomWord);
