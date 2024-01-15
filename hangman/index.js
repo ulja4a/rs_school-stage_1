@@ -33,11 +33,11 @@ score.textContent = '0 / 6';
 modal.classList.add('modal');
 modalContent.classList.add('modal-content');
 smile.classList.add('modal-img');
-smile.src = './images/smile-0.png';
+//smile.src = './images/smile-0.png';
 smile.alt = 'smile';
 gameEnd.classList.add('game-over');
 textModal.classList.add('modal-text');
-textModal.innerText = 'The correct word was: ';
+//textModal.innerText = 'The correct word was: ';
 buttonModal.classList.add('play-again');
 buttonModal.textContent = 'Play Again';
 document.body.append(comtainer);
@@ -65,6 +65,14 @@ gameBox.append(keyboardDiv);
 let currentGuesses = 0;
 let maxGuesses = 6;
 let rightLetters = [];
+let gameOver = (isVictory) => {
+  setTimeout(() => {
+    smile.src = `images/${isVictory ? 'smile-1' : 'smile-0'}.png`;
+    gameEnd.innerText = `${isVictory ? 'Win!' : 'Game Over!'}`;
+    textModal.innerHTML = `${isVictory ? 'You found the word:' : 'The correct word was:'}  ${currentWord}`;
+    modal.classList.add('show');
+  }, 400);
+}
 
 let initGame = (button, clickedLetter) => {
   console.log(button, clickedLetter);
