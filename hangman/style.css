@@ -51,6 +51,11 @@ body {
   margin-bottom: 40px;
 }
 
+.active {
+  border-color: transparent;
+  margin: -40px 0 35px;
+}
+
 h4 {
   text-align: center;
   font-size: 1.5rem;
@@ -64,4 +69,29 @@ h4 {
 
 span {
   color: red;
+}
+
+.keyboard {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 160px;
+}
+
+.keyboard button {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 15px;
+  background: #24bb56;
+  text-transform: uppercase;
+  width: calc(100% / 13 - 7px);
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+
+.keyboard button:hover {
+  background: #78ee9f;
 }

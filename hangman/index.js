@@ -34,3 +34,14 @@ wordDisplay.append(letter);
 gameBox.append(question);
 gameBox.append(guesses);
 guesses.append(score);
+
+// add keyboards buttons
+let keyboardDiv = document.createElement('div');
+keyboardDiv.classList.add('keyboard');
+gameBox.append(keyboardDiv);
+
+for (let i = 97; i <= 122; i++) {
+  let button = document.createElement('button');
+  button.innerText = String.fromCharCode(i);
+  keyboardDiv.appendChild(button);
+}
