@@ -56,6 +56,7 @@ let initGame = (button, clickedLetter) => {
     currentGuesses++;
     gallowsImg.src = `./images/gallows-${currentGuesses}.png`
   }
+  button.disabled = true;
   score.innerText = `${currentGuesses} / ${maxGuesses}`;
 }
 guesses.append(score);
@@ -117,7 +118,7 @@ let currentWord;
 let getRandomWord = () => {
   let { word, question } = wordList[Math.floor(Math.random() * wordList.length)];
   currentWord = word;
-  console.log(question);
+  console.log(word);
   questionDisplay.innerText = question;
   wordDisplay.innerHTML = word.split("").map(() => `<li class="letter"></li>`).join("");
 }
