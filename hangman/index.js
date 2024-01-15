@@ -85,7 +85,6 @@ let gameOver = (isVictory) => {
 }
 
 let initGame = (button, clickedLetter) => {
-  console.log(button, clickedLetter);
   if(currentWord.includes(clickedLetter)) {
     [...currentWord].forEach((letter, index) => {
       if(letter === clickedLetter) {
