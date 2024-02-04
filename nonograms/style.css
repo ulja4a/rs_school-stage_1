@@ -104,3 +104,7 @@
   margin: 0;
   padding: 0;
 }
+
+.filled {
+  background: #000;
+}

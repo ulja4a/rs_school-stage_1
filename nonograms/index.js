@@ -19,10 +19,10 @@ chooseGame.classList.add('choose-game');
 wrapper.appendChild(chooseGame);
 wrap.classList.add('grid-wrap');
 wrapper.appendChild(wrap);
-boardColumn.classList.add('board-column');
-wrap.appendChild(boardColumn);
 hintsRow.classList.add('hints-row');
 wrap.appendChild(hintsRow);
+boardColumn.classList.add('board-column');
+wrap.appendChild(boardColumn);
 hintsColumn.classList.add('hints-column');
 boardColumn.appendChild(hintsColumn);
 board.classList.add('board');
@@ -198,13 +198,62 @@ function calculateHints(row) {
 
 function updateHintsRowHeight(size) {
   let hintsRow = document.querySelector('.hints-row');
-  hintsRow.style.height = size * 30 + 'px'; // Предполагая, что размер ячейки - 30px
+  hintsRow.style.height = size * 30 + 'px'; 
 }
 
 function updateHintsColumnWidth(size) {
   let hintsColumn = document.querySelector('.hints-column');
-  hintsColumn.style.width = size * 30 + 'px'; // Предполагая, что размер ячейки - 30px
+  hintsColumn.style.width = size * 30 + 'px'; 
 }
+
+// обработчик клика для каждой клетки поля
+board.addEventListener('click', function(event) {
+  if (event.target.classList.contains('cell')) {
+    toggleCellColor(event.target);
+    checkForVictory();
+  }
+});
+
+// закрашивания/очистки клетки
+function toggleCellColor(cell) {
+  cell.classList.toggle('filled');
+}
+
+// проверка на победу
+function checkForVictory() {
+  let currentField = getCurrentFieldState();
+
+  // Проверяем совпадение текущего поля с массивами из gridSelectionEasy
+  let isVictory = gridSelectionEasy.some(option => arraysAreEqual(option.field, currentField));
+
+  if (isVictory) {
+    console.log('Поздравляю, вы победили!');
+  }
+}
+
+// Функция для получения текущего состояния поля в виде двумерного массива
+function getCurrentFieldState() {
+  let currentField = [];
+
+  document.querySelectorAll('.cell').forEach(cell => {
+    let row = parseInt(cell.dataset.row, 10);
+    let col = parseInt(cell.dataset.col, 10);
+
+    if (!currentField[row]) {
+      currentField[row] = [];
+    }
+
+    currentField[row][col] = cell.classList.contains('filled') ? 1 : 0;
+  });
+
+  return currentField;
+}
+
+// Функция для сравнения двух двумерных массивов
+function arraysAreEqual(arr1, arr2) {
+  return JSON.stringify(arr1) === JSON.stringify(arr2);
+}
+
 
 /*let sizes = [5, 10, 15];
 
