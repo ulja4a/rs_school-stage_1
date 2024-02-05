@@ -173,3 +173,24 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.buttons {
+  display: flex;
+}
+
+.button {
+  margin-right: 40px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid #303075;
+  cursor: pointer;
+}
+
+.button:last-child {
+  margin-right: 0;
+}
+
+.button:hover {
+  background-color: #303075;
+  color: #fff;
+}

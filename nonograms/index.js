@@ -8,6 +8,10 @@ const hintsRow = document.createElement('div');
 const boardColumn = document.createElement('div');
 const modalWin = document.createElement('div');
 const winContent = document.createElement('div');
+const randomButton = document.createElement('button');
+const solutionButton = document.createElement('button');
+const buttons = document.createElement('div');
+const resetGameButton = document.createElement('button');
 
 
 document.body.classList.add('body');
@@ -29,6 +33,17 @@ hintsColumn.classList.add('hints-column');
 boardColumn.appendChild(hintsColumn);
 board.classList.add('board');
 boardColumn.appendChild(board);
+buttons.classList.add('buttons');
+wrapper.appendChild(buttons);
+randomButton.classList.add('button');
+randomButton.textContent = 'Random game';
+buttons.appendChild(randomButton);
+solutionButton.classList.add('button');
+solutionButton.textContent = 'Solution';
+buttons.appendChild(solutionButton);
+resetGameButton.classList.add('button');
+resetGameButton.textContent = 'Reset game';
+buttons.appendChild(resetGameButton);
 
 
 modalWin.classList.add('modal-win');
@@ -278,7 +293,7 @@ board.addEventListener('contextmenu', function(event) {
 
 function toggleCross(cell) {
   let existingCross = cell.querySelector('.cross');
-  let existingFilled = cell.querySelector('.filled');
+  //let existingFilled = cell.querySelector('.filled');
   
   if (existingCross) {
     console.log(555)
@@ -319,6 +334,21 @@ window.onclick = function(event) {
 function resetGame() {
   updateGameBoard(5);
 }
+
+let gameSelectionRadios = document.querySelectorAll('input[name="game-selection"]');
+randomButton.addEventListener('click', function() {
+  
+  console.log('reset')
+    let randomIndex = Math.floor(Math.random() * gridSelectionEasy.length);
+    console.log(randomIndex)
+    console.log(gridSelectionEasy[randomIndex].field)
+    gameSelectionRadios[randomIndex].checked = true;
+  gameSelectionRadios[randomIndex].dispatchEvent(new Event('change'));
+});
+
+resetGameButton.addEventListener('click', function() {
+  resetGame();
+})
 
 /*let sizes = [5, 10, 15];
 
