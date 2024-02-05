@@ -293,13 +293,11 @@ board.addEventListener('contextmenu', function(event) {
 
 function toggleCross(cell) {
   let existingCross = cell.querySelector('.cross');
-  //let existingFilled = cell.querySelector('.filled');
   
   if (existingCross) {
     console.log(555)
     existingCross.remove();
   } else {
-    
     let cross = document.createElement('div');
     cross.classList.add('cross');
     cell.appendChild(cross);
