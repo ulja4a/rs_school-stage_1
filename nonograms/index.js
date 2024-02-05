@@ -173,7 +173,6 @@ function updateHintsRow(field) {
     hints.forEach(function(hint) {
       const hintCell = document.createElement('div');
       hintCell.classList.add('hint-cell');
-      console.log(hint)
       hintCell.textContent = hint;
       hintRow.appendChild(hintCell);
     });
@@ -271,8 +270,9 @@ function getCurrentFieldState() {
 
     currentField[row][col] = cell.classList.contains('filled') ? 1 : 0;
   });
-
+  
   return currentField;
+  
 }
 
 // Функция для сравнения двух двумерных массивов
@@ -336,6 +336,7 @@ function resetGame() {
 }
 
 let gameSelectionRadios = document.querySelectorAll('input[name="game-selection"]');
+
 randomButton.addEventListener('click', function() {
   
   console.log('reset')
@@ -348,164 +349,42 @@ randomButton.addEventListener('click', function() {
 
 resetGameButton.addEventListener('click', function() {
   resetGame();
-})
-
-/*let sizes = [5, 10, 15];
-
-sizes.forEach(function (size) {
-  let label = document.createElement('label');
-  let radio = document.createElement('input');
-    radio.type = 'radio';
-    radio.name = 'grid-size';
-    radio.value = size;
-    if (size === 5) {
-      radio.checked = true;
-    }
-
-  label.appendChild(radio);
-  label.appendChild(document.createTextNode(' ' + size + 'x' + size));
-  sizeBoard.appendChild(label);
-  });
-
-sizeBoard.addEventListener('change', function (event) {
-  let newSize = parseInt(event.target.value, 10);
-  updateGameBoard(newSize);
 });
 
-updateGameBoard(5);
 
 
-function updateGameBoard(size) {
-  let board = document.querySelector('.board');
-  board.innerHTML = '';
-
-  // Используйте новый размер при создании сетки
-  board.style.gridTemplateColumns = `repeat(${size}, 30px)`;
-  board.style.gridTemplateRows = `repeat(${size}, 30px)`;
-
-  for (let i = 0; i < size; i++) {
-    for (let j = 0; j < size; j++) {
-      const cell = document.createElement('div');
-      cell.classList.add('cell');
-      cell.dataset.row = i;
-      cell.dataset.col = j;
-      board.appendChild(cell);
-    }
-  }
-}
-
-
-
-let gridSelectionEasy = [
-  {
-    name: 'trident',
-    field: [
-            [1, 0, 1, 0, 1], 
-            [1, 0, 1, 0, 1],
-            [0, 1, 1, 1, 0],
-            [0, 1, 1, 1, 0],
-            [0, 0, 1, 0, 0]]
-  },
-  {
-    name: 'dog',
-    field: [
-            [0, 0, 0, 1, 0],
-            [1, 0, 1, 1, 1],
-            [0, 1, 1, 1, 0],
-            [0, 1, 0, 1, 0],
-            [0, 1, 0, 1, 0]]
-  }
-]
-
-let gridSelectionMedium = [
-  {
-    name: 'trident',
-    field: [
-            [1, 0, 1, 0, 1, 0], 
-            [1, 0, 1, 0, 1, 0],
-            [0, 1, 1, 1, 0, 0],
-            [0, 1, 1, 1, 0, 0],
-            [0, 0, 1, 0, 0, 0]
-            [0, 0, 1, 0, 0, 0]]
-  },
-  {
-    name: 'dog',
-    field: [
-            [0, 0, 0, 1, 0, 0],
-            [1, 0, 1, 1, 1, 0],
-            [0, 1, 1, 1, 0, 0],
-            [0, 1, 0, 1, 0, 0],
-            [0, 1, 0, 1, 0, 0]
-            [0, 1, 0, 1, 0, 0]]
-  }
-]
-
-let gridSelectionHard = [
-  {
-    name: 'trident',
-    field: [
-            [1, 0, 1, 0, 1, 0, 0], 
-            [1, 0, 1, 0, 1, 0, 0],
-            [0, 1, 1, 1, 0, 0, 0],
-            [0, 1, 1, 1, 0, 0, 0],
-            [0, 0, 1, 0, 0, 0, 0]
-            [0, 0, 1, 0, 0, 0, 0]
-            [0, 0, 1, 0, 0, 0, 0]]
-  },
-  {
-    name: 'dog',
-    field: [
-            [0, 0, 0, 1, 0, 0, 0],
-            [1, 0, 1, 1, 1, 0, 0],
-            [0, 1, 1, 1, 0, 0, 0],
-            [0, 1, 0, 1, 0, 0, 0],
-            [0, 1, 0, 1, 0, 0, 0]
-            [0, 1, 0, 1, 0, 0, 0]]
-  }
-]
-
-let selectionWrap = document.querySelector('.selection-wrap');
-
-
-gridSelectionEasy.forEach(function(option, index) {
-  let radio = document.createElement('input');
-  radio.type = 'radio';
-  radio.name = 'field-selection';
-  radio.value = option.name;
-
-  if (index === 0) {
-    radio.checked = true;
-  }
-
-  let label = document.createElement('label');
-  label.appendChild(radio);
-  label.appendChild(document.createTextNode(' ' + option.name));
-
-  selectionWrap.appendChild(label);
-});
-
-selectionWrap.addEventListener('change', function(event) {
-  let selectedFieldName = event.target.value;
-  let selectedField = gridSelectionEasy.find(option => option.name === selectedFieldName).field;
-
+function getGameBoard(field) {
   
-  useSelectedField(selectedField);
-});
-useSelectedField(gridSelectionEasy[0]);
+  let cells = document.querySelectorAll('.cell');
 
+  cells.forEach((cell, index) => {
+    let i = Math.floor(index / field.length);
+    let j = index % field.length;
 
-// Функция для использования выбранного поля (замените этот код на свою логику)
-function useSelectedField(field) {
-  console.log('Выбранное поле:', field);
-  // Добавьте свою логику обработки выбранного поля
+    cell.style.backgroundColor = field[i][j] === 1 ? 'black' : 'white';
+  });
 }
+let checkedRadio = document.querySelector('input[name="game-selection"]:checked');
+let selectedFieldName = checkedRadio.value;
+let selectedField = gridSelectionEasy.find(option => option.name === selectedFieldName);
 
-/*for (let i = 0; i < grid.length; i++) {
-  for (let j = 0; j < grid[i].length; j++) {
-    const cell = document.createElement('div');
-    cell.classList.add('cell');
-    cell.style.backgroundColor = grid[i][j] === 1 ? 'black' : 'white';
-    board.appendChild(cell);
-  }
-}*/
+gameSelectionRadios.forEach(radio => {
+  radio.addEventListener('change', function() {
+    selectedField = gridSelectionEasy.find(option => option.name === this.value);
+    updateGameBoard(5);
+  });
+});
+
+randomButton.addEventListener('click', function() {
+  resetGame();
+  updateGameBoard(5);
+  let randomIndex = Math.floor(Math.random() * gridSelectionEasy.length);
+  gameSelectionRadios[randomIndex].checked = true;
+  gameSelectionRadios[randomIndex].dispatchEvent(new Event('change'));
+});
+
+solutionButton.addEventListener('click', function() {
+  resetGame();
+  getGameBoard(selectedField.field);
+});
 
