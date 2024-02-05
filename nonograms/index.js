@@ -6,6 +6,8 @@ const chooseGame = document.createElement('div');
 const hintsColumn = document.createElement('div');
 const hintsRow = document.createElement('div');
 const boardColumn = document.createElement('div');
+const modalWin = document.createElement('div');
+const winContent = document.createElement('div');
 
 
 document.body.classList.add('body');
@@ -28,6 +30,13 @@ boardColumn.appendChild(hintsColumn);
 board.classList.add('board');
 boardColumn.appendChild(board);
 
+
+modalWin.classList.add('modal-win');
+winContent.classList.add('win-content');
+winContent.textContent = 'Great! You have solved the nonogram!'
+
+document.body.appendChild(modalWin);
+modalWin.appendChild(winContent);
 
 
 let gridSelectionEasy = [
@@ -227,7 +236,9 @@ function checkForVictory() {
   let isVictory = gridSelectionEasy.some(option => arraysAreEqual(option.field, currentField));
 
   if (isVictory) {
-    console.log('Поздравляю, вы победили!');
+    showVictoryModal();
+    //modalWin.style.display = 'block';
+  console.log('Поздравляю, вы победили!');
   }
 }
 
@@ -254,6 +265,60 @@ function arraysAreEqual(arr1, arr2) {
   return JSON.stringify(arr1) === JSON.stringify(arr2);
 }
 
+board.addEventListener('contextmenu', function(event) {
+  event.preventDefault(); // Отменяем стандартное контекстное меню
+
+  let cell = event.target.closest('.cell');
+
+    if (cell) {
+      toggleCross(cell);
+      console.log(444);
+    }
+});
+
+function toggleCross(cell) {
+  let existingCross = cell.querySelector('.cross');
+  let existingFilled = cell.querySelector('.filled');
+  
+  if (existingCross) {
+    console.log(555)
+    existingCross.remove();
+  } else {
+    
+    let cross = document.createElement('div');
+    cross.classList.add('cross');
+    cell.appendChild(cross);
+  }
+
+}
+
+function showVictoryModal() {
+  openModal();
+}
+
+
+let modal = modalWin.querySelector('.modal-win');
+
+function openModal() {
+  modalWin.style.display = 'block';
+}
+
+function closeModal() {
+  if (modalWin) {
+  modalWin.style.display = 'none';
+  resetGame();
+  }
+}
+
+window.onclick = function(event) {
+  if (modalWin && event.target === modalWin) {
+    closeModal();
+  }
+};
+
+function resetGame() {
+  updateGameBoard(5);
+}
 
 /*let sizes = [5, 10, 15];
 
