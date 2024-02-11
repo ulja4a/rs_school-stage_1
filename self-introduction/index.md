@@ -1,6 +1,6 @@
 Link: https://youtu.be/7rlxOi7hKMI
 
-Hi, my name is Ulyana, I'm 38 and I'm a junior front-end developer.
+Hi, my name is Ulyana, I'm 39 and I'm a junior front-end developer.
 
 I graduated from the Bonch-Bruevich Saint-Petersburg State University of Telecommunications and worked in the field of IT, but it was not related to frontend development. I worked as telecommunication engineer, system administration and my groups in social network. I was not satisfied with my work, so I passed the testing QA course. Where the topic of programming js was touched and I liked it so much! And currently I'm attending the RSSchool frontend course.
 
