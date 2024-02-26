@@ -15,3 +15,4 @@ Here is a collection of badges I earned from completing Microsoft Learn's TypeSc
 
 ## Reflections
 
+Simple and straightforward exercises to get you started with TypeScript.
