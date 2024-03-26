@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(75, 73, 73);
+  font-family: Montserrat;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #fff;
+}
+
+.wrapper {
+  max-width: 1440px;
+  width: 100%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  column-gap: 40px;
+  row-gap: 40px;
+}
+
+.header,
+.action-buttons {
+  display: flex;
+  column-gap: 40px;
+}
+
+.button {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid rgb(114, 175, 233);
+  cursor: pointer;
+  background-color: rgb(175, 202, 228);
+  border-radius: 5px;
+  font-size: 2rem;
+  color: rgb(44, 44, 44);
+  transition: .2s;
+}
+
+.button:hover {
+  background-color: rgb(141, 187, 230);
+  color: black;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 30px;
+}
+
+.controls-create,
+.controls-update {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+input {
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid rgb(114, 175, 233);
+  padding: 5px;
+  font-size: 2rem;
+  outline: none;
+  color: black;
+}
+
+.input-car-color {
+  cursor: pointer;
+  width: 40px;
+  padding: 0;
+}
+
+.garage-header {
+  display: flex;
+  gap: 40px;
+}
+
+.garage-title,
+.garage-num {
+  font-size: 3rem;
+}
