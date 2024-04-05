@@ -1,0 +1,21 @@
+body {
+  background: bisque;
+}
+
+.wrapper {
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  border-radius: 10px;
+  border: 1px solid gray;
+  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+  padding: 20px;
+}
