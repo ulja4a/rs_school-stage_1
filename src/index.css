@@ -1,4 +1,12 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap);
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  font-weight: 500;
   background: bisque;
 }
 
@@ -14,8 +22,108 @@ body {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   border-radius: 10px;
   border: 1px solid gray;
   box-shadow: 0 0 6px rgb(0 0 0 / 14%);
   padding: 20px;
+}
+
+.title {
+  text-align: center;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-field-login,
+.input-field-password {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 20px;
+}
+
+.label-login,
+.label-password {
+  color: gray;
+}
+
+.input-login,
+.input-password {
+  width: 320px;
+  max-width: 320px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: rgb(255, 228, 196, 1);
+  border-radius: 5px;
+  box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+  height: 30px;
+  transition: 0.2s ease-in-out;
+}
+
+.input-login:focus,
+.input-password:focus {
+  box-shadow: inset 0 0 0 2px #52e6d9, 0 0 7px #52e6d9;
+}
+
+.input-login::placeholder,
+.input-password::placeholder {
+  font-size: 10px;
+  line-height: 10px;
+  color: rgb(131, 128, 128);
+  }
+
+.button-autorization,
+.button-about {
+  min-width: 240px;
+  border-radius: 5px;
+  border: 2px solid rgb(175, 173, 173);
+  background-color: rgb(175, 173, 173);
+  text-align: center;
+  color: black;
+  display: block;
+  padding: 16px 70px;
+  margin: auto;
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-family: Inter, sans-serif;
+  opacity: 1;
+}
+
+.button-autorization:hover,
+.button-about:hover {
+  cursor: pointer;
+  border: 2px solid #52e6d9;
+}
+
+.button-autorization:disabled {
+  cursor: default;
+  border: 2px solid rgb(175, 173, 173);
+  opacity: 0.5;
+}
+
+.container-input-login,
+.container-input-password {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label-login-error,
+.label-password-error {
+  max-width: 320px;
+  font-size: 9px;
 }
