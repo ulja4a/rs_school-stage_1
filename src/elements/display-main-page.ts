@@ -1,110 +1,87 @@
+import { createElement } from '../components.ts/createElement';
+import { routingToAbout } from '../utils/routing';
+
 export function displayMainElements() {
-  const body = document.querySelector('body') as HTMLElement;
-
-  const wrapper = document.createElement('div');
-  wrapper.classList.add('wrapper');
-  body.append(wrapper);
-
-  const main = document.createElement('div');
-  main.classList.add('main');
-  wrapper.append(main);
-
-  const card = document.createElement('div');
-  card.classList.add('card');
-  main.append(card);
-
-  const title = document.createElement('h1');
-  title.classList.add('title');
-  title.textContent = 'Autorization';
-  card.append(title);
-
-  const fields = document.createElement('div');
-  fields.classList.add('fields');
-  card.append(fields);
-
-  const form = document.createElement('form');
-  form.classList.add('form');
-  form.name = 'form';
-  fields.append(form);
-
-  const actions = document.createElement('div');
-  actions.classList.add('actions');
-  card.append(actions);
-
-  const link = document.createElement('a');
-  link.classList.add('link');
-  actions.append(link);
-
-  //////// * inputs
-  const inputFieldLogin = document.createElement('div');
-  inputFieldLogin.classList.add('input-field-login');
+  const wrapper = createElement('div', 'wrapper');
+  const card = createElement('div', 'card');
+  const title = createElement('h1', 'title', 'Autorization');
+  const fields = createElement('div', 'fields');
+  const form = createElement('div', 'form');
+  const inputFieldLogin = createElement('div', 'input-field-login');
   inputFieldLogin.setAttribute('data-name', 'login');
-  form.append(inputFieldLogin);
-
-  const labelLogin = document.createElement('label');
-  labelLogin.classList.add('label-login');
+  const labelLogin = createElement('label', 'label-login', 'Login');
   labelLogin.setAttribute('for', 'login');
-  labelLogin.textContent = 'Login';
-  inputFieldLogin.append(labelLogin);
-
-  const containerInputLogin = document.createElement('div');
-  containerInputLogin.classList.add('container-input-login');
-  inputFieldLogin.append(containerInputLogin);
-
-  const inputLogin = document.createElement('input');
-  inputLogin.classList.add('input-login');
-  inputLogin.type = 'login';
-  inputLogin.name = 'login';
-  inputLogin.id = 'login';
+  const containerInputLogin = createElement('div', 'container-input-login');
+  const inputLogin = createElement('input', 'input-login', '', '', {
+    type: 'text',
+    placeholder: 'Enter name',
+    id: 'login',
+  });
   inputLogin.setAttribute('data-reg', '(?!^d+$)[A-Za-z0-9_]{3,20}');
-  inputLogin.placeholder = 'Enter name';
-  containerInputLogin.append(inputLogin);
-
-  const labelLoginError = document.createElement('label');
-  labelLoginError.classList.add('label-login-error');
-  labelLoginError.textContent = 'From 3 to 20 characters, Latin alphabet, without spaces, without special characters.';
-  containerInputLogin.append(labelLoginError);
-
-  const inputFieldPassword = document.createElement('div');
-  inputFieldPassword.classList.add('input-field-password');
+  inputLogin.setAttribute('required', 'true');
+  const labelLoginError = createElement(
+    'label',
+    'label-login-error',
+    'From 3 to 20 characters, Latin alphabet, without spaces, without special characters.'
+  );
+  const inputFieldPassword = createElement('div', 'input-field-password');
   inputFieldPassword.setAttribute('data-name', 'password');
-  form.append(inputFieldPassword);
-
-  const labelPassword = document.createElement('label');
-  labelPassword.classList.add('label-password');
-  labelPassword.textContent = 'Password';
-  inputFieldPassword.append(labelPassword);
-
-  const containerInputPassword = document.createElement('div');
-  containerInputPassword.classList.add('container-input-password');
-  inputFieldPassword.append(containerInputPassword);
-
-  const inputPassword = document.createElement('input');
-  inputPassword.classList.add('input-password');
-  inputPassword.type = 'password';
-  inputPassword.name = 'password';
-  inputPassword.id = 'password';
+  const labelPassword = createElement('label', 'label-password', 'Password');
+  const containerInputPassword = createElement('div', 'container-input-password');
+  const inputPassword = createElement('input', 'input-password', '', '', {
+    type: 'password',
+    placeholder: 'Enter password',
+    id: 'password',
+  });
   inputPassword.setAttribute('data-reg', '^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?!.*\\s)(?!.*[_])[\\w]{6,20}$');
-  inputPassword.placeholder = 'Enter password';
-  containerInputPassword.append(inputPassword);
+  inputPassword.setAttribute('required', 'true');
+  const labelPasswordError = createElement(
+    'label',
+    'label-password-error',
+    'From 6 to 20 characters, Latin alphabet, at least one digit, one lowercase letter, and one uppercase letter must be present'
+  );
+  const buttonAuthorization = createElement('button', 'button-authorization', 'Enter to App', '', {
+    type: 'submit',
+  });
+  buttonAuthorization.setAttribute('disabled', 'true');
+  const buttonAbout = createElement('button', 'button-about', 'About App', '', {
+    type: 'button',
+  });
+  buttonAbout.addEventListener('click', routingToAbout);
 
-  const labelPasswordError = document.createElement('label');
-  labelPasswordError.classList.add('label-password-error');
-  labelPasswordError.textContent =
-    'From 6 to 20 characters, Latin alphabet, at least one digit, one lowercase letter, and one uppercase letter must be present';
-  containerInputPassword.append(labelPasswordError);
-
-  //////// * buttons
-  const buttonAutorization = document.createElement('button');
-  buttonAutorization.classList.add('button-autorization');
-  buttonAutorization.type = 'submit';
-  buttonAutorization.setAttribute('disabled', 'true');
-  buttonAutorization.textContent = 'Enter to App';
-  form.append(buttonAutorization);
-
-  const buttonAbout = document.createElement('button');
-  buttonAbout.classList.add('button-about');
-  buttonAbout.type = 'button';
-  buttonAbout.textContent = 'About App';
-  form.append(buttonAbout);
+  wrapper.appendChild(card);
+  card.appendChild(title);
+  card.appendChild(fields);
+  fields.appendChild(form);
+  form.appendChild(inputFieldLogin);
+  inputFieldLogin.appendChild(labelLogin);
+  inputFieldLogin.appendChild(containerInputLogin);
+  containerInputLogin.appendChild(inputLogin);
+  containerInputLogin.appendChild(labelLoginError);
+  form.appendChild(inputFieldPassword);
+  inputFieldPassword.appendChild(labelPassword);
+  inputFieldPassword.appendChild(containerInputPassword);
+  containerInputPassword.appendChild(inputPassword);
+  containerInputPassword.appendChild(labelPasswordError);
+  form.appendChild(buttonAuthorization);
+  form.appendChild(buttonAbout);
+  return {
+    wrapper,
+    card,
+    title,
+    fields,
+    form,
+    inputFieldLogin,
+    labelLogin,
+    containerInputLogin,
+    inputLogin,
+    labelLoginError,
+    inputFieldPassword,
+    labelPassword,
+    containerInputPassword,
+    inputPassword,
+    labelPasswordError,
+    buttonAuthorization,
+    buttonAbout,
+  };
 }

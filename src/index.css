@@ -12,6 +12,9 @@ body {
 
 .wrapper {
   padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main {
@@ -21,9 +24,12 @@ body {
   min-height: 100vh;
 }
 
-.card {
+.card,
+.about-card {
+  width: 420px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
   border-radius: 10px;
   border: 1px solid gray;
@@ -31,8 +37,23 @@ body {
   padding: 20px;
 }
 
-.title {
+.unvisable-authorisation {
+  display: none;
+}
+
+.title,
+.about-title {
   text-align: center;
+}
+
+.about-text {
+  text-align: center;
+  margin: 0;
+  font-size: 18px;
+}
+
+.about-link {
+  text-decoration: none;
 }
 
 .fields {
@@ -86,8 +107,9 @@ body {
   color: rgb(131, 128, 128);
   }
 
-.button-autorization,
-.button-about {
+.button-authorization,
+.button-about,
+.button-return {
   min-width: 240px;
   border-radius: 5px;
   border: 2px solid rgb(175, 173, 173);
@@ -103,13 +125,14 @@ body {
   opacity: 1;
 }
 
-.button-autorization:hover,
-.button-about:hover {
+.button-authorization:hover,
+.button-about:hover,
+.button-return:hover {
   cursor: pointer;
   border: 2px solid #52e6d9;
 }
 
-.button-autorization:disabled {
+.button-authorization:disabled {
   cursor: default;
   border: 2px solid rgb(175, 173, 173);
   opacity: 0.5;

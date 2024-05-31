@@ -23,6 +23,7 @@ const baseConfig = {
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
+        type: 'asset/resource',
         use: [
           {
             loader: 'file-loader',
