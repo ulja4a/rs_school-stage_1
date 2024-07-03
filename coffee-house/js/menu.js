@@ -1,4 +1,4 @@
-import jsonMenu from '../products.json' assert {type: "json"};
+import jsonMenu from './products.json';
 
 
 let cardsMenu = document.querySelector('.cards__menu');
