@@ -1,4 +1,9 @@
-import jsonMenu from './products.json';
+//import jsonMenu from '../json/products.json';
+async function getProductsData() {
+  const data = await fetch("./json/products.json");
+  const jsonMenu = await data.json();
+    console.log(jsonMenu);
+
 
 
 let cardsMenu = document.querySelector('.cards__menu');
@@ -195,4 +200,5 @@ function modal() {
   window.addEventListener('resize', updateDisplay);
   loadCards('coffee');
 
-
+}
+getProductsData();
