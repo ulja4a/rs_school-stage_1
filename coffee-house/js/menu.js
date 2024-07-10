@@ -1,33 +1,37 @@
-//import jsonMenu from '../json/products.json';
+document.addEventListener("DOMContentLoaded", function () {
+
+//завантаження даних з json
 async function getProductsData() {
+  //очікуємо завантаження даних у форматі json
   const data = await fetch("./json/products.json");
+  //з json в об'єкт js
   const jsonMenu = await data.json();
-    console.log(jsonMenu);
 
 
-
+//кнопки перемикання категорій
 let cardsMenu = document.querySelector('.cards__menu');
 let menuButtons = document.querySelectorAll('.menu__button');
 let loadButton = document.querySelector('.menu__load');
 let body = document.getElementsByTagName('body');
 
 
+//перебираємо кнопки категорій, вибраної додаємо зафарбовування, в інших прибираємо
 menuButtons.forEach(function(button) {
   button.addEventListener('click', function() {
     menuButtons.forEach(function(btn) {
       btn.classList.remove('button_colored');
     });
+    button.classList.add('button_colored');
 
+    //отримуємо категорію кнопки та підвантажуємо відповідні картки
     const category = button.getAttribute('data-category');
     loadCards(category);
-    
-    button.classList.add('button_colored');
   });
 });
-
+//оголошуємо поточну категорію
 let currentCategory;
 
-
+//функція завантаження карток категорій
 function loadCards(category) {
   currentCategory = category;
   cardsMenu.innerHTML = "";
@@ -76,6 +80,7 @@ function loadCards(category) {
   });
 }
 
+//функція відображення карток на екрані 768 і менше по 4 + кнопка завантаження
 function updateDisplay() {
   const loadedCards = document.querySelectorAll('.card_menu');
   
@@ -90,6 +95,7 @@ function updateDisplay() {
     }
 }
 
+//за кліком на кнопку підвантаження карток завантаження ще 4
 loadButton.addEventListener('click', function() {
   let loadCardsHidden = document.querySelectorAll('.card_menu:nth-of-type(n+5)');
   loadCardsHidden.forEach(function(itemHidden) {
@@ -99,6 +105,7 @@ loadButton.addEventListener('click', function() {
   loadButton.style.display = 'none';
 })
 
+//модальне вікно продукту
 function modal() {
   let loadedCards = document.querySelectorAll('.card_menu');
   let modalMenu = document.querySelector('.modal__menu');
@@ -116,9 +123,7 @@ function modal() {
   let modalClose = document.querySelector('.modal__content-close');
   let modalSizeButton = document.querySelectorAll('.size-button');
   
-  
-  
-
+  //перебір продуктів з поточної категорії та при натисканні на продукт відображення його мадальної картки
   loadedCards.forEach(function(item, index) {
     item.addEventListener('click', ()=> {
       document.body.style.overflow = 'hidden';
@@ -135,11 +140,9 @@ function modal() {
       modalDescription.textContent = `${description}`;
 
       let sizeS = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.s.size;
-      //let sizeSAddPrice = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.s.add-price;
       modalSizeS.textContent = `${sizeS}`;
 
       let sizeM = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.m.size;
-      //let sizeMAddPrice = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.m.add-price;
       modalSizeM.textContent = `${sizeM}`;
 
       let sizeL = jsonMenu.filter(product => product.category === currentCategory)[index].sizes.l.size;
@@ -197,8 +200,12 @@ function modal() {
 
 }
 
-  window.addEventListener('resize', updateDisplay);
-  loadCards('coffee');
+//при зміні вікна браузера змінюємо розташування продуктів та розмір модального вікна
+window.addEventListener('resize', updateDisplay);
+loadCards('coffee');
 
 }
+//запускаємо асинхронну функцію
 getProductsData();
+
+});

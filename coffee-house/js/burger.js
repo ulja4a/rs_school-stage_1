@@ -7,13 +7,9 @@ let body = document.getElementsByTagName('body');
 burger.addEventListener('click', function(event) {
   event.stopPropagation();
 
-  //stopSliderInterval();
-
   burger.classList.toggle('hamburger-activ');
   burgerMenu.classList.toggle('menu-activ')
   document.body.classList.toggle('hidden');
-
-  //startSliderInterval();
 })
 
 menuItem.forEach(function(e) {
@@ -21,10 +17,6 @@ menuItem.forEach(function(e) {
     burger.classList.remove('hamburger-activ');
     burgerMenu.classList.remove('menu-activ');
     document.body.classList.remove('hidden');
-
-    /*if (!autoPlaySlider) {
-      startSliderInterval();
-    }*/
   })
 })
 
